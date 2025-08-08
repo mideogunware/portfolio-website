@@ -1,0 +1,71 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bg)"/>
+  
+  <!-- Browser Window -->
+  <rect x="50" y="50" width="700" height="500" rx="10" fill="#ffffff" stroke="#e1e5e9" stroke-width="2"/>
+  
+  <!-- Browser Header -->
+  <rect x="50" y="50" width="700" height="40" rx="10" fill="#f8f9fa"/>
+  <circle cx="80" cy="70" r="6" fill="#ff5f56"/>
+  <circle cx="100" cy="70" r="6" fill="#ffbd2e"/>
+  <circle cx="120" cy="70" r="6" fill="#27ca3f"/>
+  
+  <!-- Title Bar -->
+  <text x="400" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#666">Resume Scanner</text>
+  
+  <!-- Upload Area -->
+  <rect x="100" y="120" width="600" height="120" rx="8" fill="#f8f9fa" stroke="#007BFF" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="400" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">Upload Resume</text>
+  <text x="400" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#666">Drag and drop files here or click to browse</text>
+  
+  <!-- File Icon -->
+  <rect x="380" y="200" width="40" height="50" rx="4" fill="#007BFF"/>
+  <rect x="385" y="205" width="30" height="3" fill="white"/>
+  <rect x="385" y="215" width="25" height="3" fill="white"/>
+  <rect x="385" y="225" width="20" height="3" fill="white"/>
+  <rect x="385" y="235" width="15" height="3" fill="white"/>
+  
+  <!-- Analysis Results -->
+  <rect x="100" y="270" width="280" height="200" rx="8" fill="#ffffff" stroke="#e1e5e9" stroke-width="1"/>
+  <text x="240" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">Analysis Results</text>
+  
+  <!-- Result Items -->
+  <rect x="120" y="310" width="240" height="30" rx="4" fill="#f8f9fa"/>
+  <text x="135" y="330" font-family="Arial, sans-serif" font-size="12" fill="#333">Name: John Doe</text>
+  
+  <rect x="120" y="350" width="240" height="30" rx="4" fill="#f8f9fa"/>
+  <text x="135" y="370" font-family="Arial, sans-serif" font-size="12" fill="#333">Email: john.doe@email.com</text>
+  
+  <rect x="120" y="390" width="240" height="30" rx="4" fill="#f8f9fa"/>
+  <text x="135" y="410" font-family="Arial, sans-serif" font-size="12" fill="#333">Experience: 5 years</text>
+  
+  <rect x="120" y="430" width="240" height="30" rx="4" fill="#f8f9fa"/>
+  <text x="135" y="450" font-family="Arial, sans-serif" font-size="12" fill="#333">Skills: React, Node.js, JavaScript</text>
+  
+  <!-- Action Buttons -->
+  <rect x="420" y="270" width="280" height="200" rx="8" fill="#ffffff" stroke="#e1e5e9" stroke-width="1"/>
+  <text x="560" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">Actions</text>
+  
+  <!-- Button 1 -->
+  <rect x="440" y="320" width="240" height="40" rx="6" fill="#007BFF"/>
+  <text x="560" y="345" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">Download Analysis</text>
+  
+  <!-- Button 2 -->
+  <rect x="440" y="370" width="240" height="40" rx="6" fill="#28a745"/>
+  <text x="560" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">Save to Database</text>
+  
+  <!-- Button 3 -->
+  <rect x="440" y="420" width="240" height="40" rx="6" fill="#6c757d"/>
+  <text x="560" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">Export Report</text>
+  
+  <!-- Footer -->
+  <text x="400" y="500" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">Resume Scanner v1.0 - React + Node.js</text>
+</svg> 

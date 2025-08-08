@@ -18,9 +18,11 @@ import ContactSection from "@/components/contact-section"
 import Footer from "@/components/footer"
 import Loader from "@/components/loader"
 import ParticleBackground from "@/components/particle-background"
+import DownloadRequestModal from "@/components/download-request-modal"
 
 export default function Portfolio() {
   const [isLoading, setIsLoading] = useState(true)
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false)
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -44,7 +46,7 @@ export default function Portfolio() {
             <EducationSection />
             <ExperienceSection />
             <AchievementsSection />
-            <ProjectsSection />
+            <ProjectsSection onOpenDownloadModal={() => setIsDownloadModalOpen(true)} />
             <DetailedProjectsSection />
             <ServicesSection />
             <SkillsSection />
@@ -55,6 +57,14 @@ export default function Portfolio() {
           <Footer />
         </>
       )}
+
+      {/* Global Download Request Modal */}
+      <DownloadRequestModal
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
+        documentType="Dissertation"
+        onSubmit={(data) => console.log("Download request submitted:", data)}
+      />
     </div>
   )
 }

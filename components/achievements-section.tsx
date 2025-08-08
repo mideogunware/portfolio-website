@@ -18,7 +18,7 @@ const achievements = [
     icon: TrendingUp,
     title: "Business Revenue",
     description: "Built profitable e-commerce business achieving five-figure revenues",
-    metric: "£10,000+",
+    metric: "Five-Figure",
     color: "text-green-400",
     bgColor: "bg-green-400/20",
   },

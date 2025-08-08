@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server"
+import { Resend } from "resend"
 
 export async function POST(request: NextRequest) {
   console.log("=== Dissertation Request API Route Called ===")
@@ -42,55 +43,63 @@ export async function POST(request: NextRequest) {
     if (RESEND_API_KEY) {
       try {
         console.log("Attempting to send dissertation request via Resend...")
+        
+        const resend = new Resend(RESEND_API_KEY)
 
-        const emailData = {
+        const { data, error } = await resend.emails.send({
           from: "Portfolio Dissertation Request <onboarding@resend.dev>",
           to: ["samuelogunware@gmail.com"],
           subject: `Dissertation Request from ${name}`,
           html: `
-            <h2>New Dissertation Request</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Time:</strong> ${new Date().toLocaleString()}</p>
-            <hr>
-            <h3>Request Details:</h3>
-            <p>This person has requested your cryptocurrency optimisation dissertation from your portfolio website.</p>
-            ${message ? `<h3>Additional Message:</h3><p>${message.replace(/\n/g, "<br>")}</p>` : ""}
-            <hr>
-            <p><strong>Action Required:</strong> Please send the full 45-page dissertation PDF to ${email}</p>
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
+              <div style="background-color: #007BFF; color: white; padding: 20px; border-radius: 8px 8px 0 0;">
+                <h1 style="margin: 0; font-size: 24px;">New Dissertation Request</h1>
+              </div>
+              <div style="background-color: white; padding: 20px; border-radius: 0 0 8px 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                <div style="margin-bottom: 20px;">
+                  <h3 style="color: #333; margin-bottom: 10px;">Request Information</h3>
+                  <p><strong>Name:</strong> ${name}</p>
+                  <p><strong>Email:</strong> ${email}</p>
+                  <p><strong>Time:</strong> ${new Date().toLocaleString()}</p>
+                </div>
+                <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+                <div style="margin-bottom: 20px;">
+                  <h3 style="color: #333; margin-bottom: 10px;">Request Details</h3>
+                  <p>This person has requested your cryptocurrency optimisation dissertation from your portfolio website.</p>
+                  ${message ? `<div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #007BFF; margin-top: 10px;">
+                    <h4 style="color: #333; margin-bottom: 5px;">Additional Message:</h4>
+                    <p style="margin: 0;">${message.replace(/\n/g, "<br>")}</p>
+                  </div>` : ""}
+                </div>
+                <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+                <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px;">
+                  <p style="margin: 0; color: #856404;"><strong>Action Required:</strong> Please send the full 45-page dissertation PDF to ${email}</p>
+                </div>
+                <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; font-size: 12px; color: #666;">
+                  <p>This request was sent from your portfolio dissertation request form.</p>
+                </div>
+              </div>
+            </div>
           `,
-          reply_to: email,
-        }
-
-        const resendResponse = await fetch("https://api.resend.com/emails", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${RESEND_API_KEY}`,
-          },
-          body: JSON.stringify(emailData),
+          replyTo: email,
         })
 
-        console.log("Resend response status:", resendResponse.status)
-
-        if (resendResponse.ok) {
-          const result = await resendResponse.json()
-          console.log("Dissertation request sent successfully:", result.id)
-
-          return NextResponse.json(
-            {
-              success: true,
-              message: "🎉 Request sent successfully! I'll email you the dissertation within 24 hours.",
-              automated: true,
-              emailId: result.id,
-            },
-            { headers: { "Content-Type": "application/json" } },
-          )
-        } else {
-          const errorText = await resendResponse.text()
-          console.error("Resend API error:", errorText)
-          throw new Error("Resend failed")
+        if (error) {
+          console.error("Resend error:", error)
+          throw new Error(`Resend failed: ${error.message}`)
         }
+
+        console.log("Dissertation request sent successfully:", data?.id)
+
+        return NextResponse.json(
+          {
+            success: true,
+            message: "🎉 Request sent successfully! I'll email you the dissertation within 24 hours.",
+            automated: true,
+            emailId: data?.id,
+          },
+          { headers: { "Content-Type": "application/json" } },
+        )
       } catch (resendError) {
         console.error("Resend error:", resendError)
         // Fall through to mailto fallback

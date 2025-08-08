@@ -6,12 +6,6 @@ import { useRef } from "react"
 
 const timelineEvents = [
   {
-    year: "2015",
-    title: "Started Secondary Education",
-    description: "Began A-Levels in Computer Science, Business, and Graphic Communication",
-    type: "education",
-  },
-  {
     year: "2021",
     title: "First Professional Experience",
     description: "Business Analyst Intern - analyzed financial data and created Excel dashboards",

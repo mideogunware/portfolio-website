@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server"
+import { Resend } from "resend"
 
 export async function POST(request: NextRequest) {
   console.log("=== Contact API Route Called ===")
@@ -42,52 +43,57 @@ export async function POST(request: NextRequest) {
     if (RESEND_API_KEY) {
       try {
         console.log("Attempting to send email via Resend...")
+        
+        const resend = new Resend(RESEND_API_KEY)
 
-        const emailData = {
+        const { data, error } = await resend.emails.send({
           from: "Portfolio Contact <onboarding@resend.dev>",
           to: ["samuelogunware@gmail.com"],
           subject: `Portfolio Contact from ${name}`,
           html: `
-            <h2>New Portfolio Contact</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Time:</strong> ${new Date().toLocaleString()}</p>
-            <hr>
-            <h3>Message:</h3>
-            <p>${message.replace(/\n/g, "<br>")}</p>
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
+              <div style="background-color: #007BFF; color: white; padding: 20px; border-radius: 8px 8px 0 0;">
+                <h1 style="margin: 0; font-size: 24px;">New Portfolio Contact</h1>
+              </div>
+              <div style="background-color: white; padding: 20px; border-radius: 0 0 8px 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                <div style="margin-bottom: 20px;">
+                  <h3 style="color: #333; margin-bottom: 10px;">Contact Information</h3>
+                  <p><strong>Name:</strong> ${name}</p>
+                  <p><strong>Email:</strong> ${email}</p>
+                  <p><strong>Time:</strong> ${new Date().toLocaleString()}</p>
+                </div>
+                <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+                <div>
+                  <h3 style="color: #333; margin-bottom: 10px;">Message</h3>
+                  <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #007BFF;">
+                    ${message.replace(/\n/g, "<br>")}
+                  </div>
+                </div>
+                <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; font-size: 12px; color: #666;">
+                  <p>This message was sent from your portfolio contact form.</p>
+                </div>
+              </div>
+            </div>
           `,
-          reply_to: email,
-        }
-
-        const resendResponse = await fetch("https://api.resend.com/emails", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${RESEND_API_KEY}`,
-          },
-          body: JSON.stringify(emailData),
+          replyTo: email,
         })
 
-        console.log("Resend response status:", resendResponse.status)
-
-        if (resendResponse.ok) {
-          const result = await resendResponse.json()
-          console.log("Email sent successfully:", result.id)
-
-          return NextResponse.json(
-            {
-              success: true,
-              message: "🎉 Message sent successfully! I'll respond within 24 hours.",
-              automated: true,
-              emailId: result.id,
-            },
-            { headers: { "Content-Type": "application/json" } },
-          )
-        } else {
-          const errorText = await resendResponse.text()
-          console.error("Resend API error:", errorText)
-          throw new Error("Resend failed")
+        if (error) {
+          console.error("Resend error:", error)
+          throw new Error(`Resend failed: ${error.message}`)
         }
+
+        console.log("Email sent successfully:", data?.id)
+
+        return NextResponse.json(
+          {
+            success: true,
+            message: "🎉 Message sent successfully! I'll respond within 24 hours.",
+            automated: true,
+            emailId: data?.id,
+          },
+          { headers: { "Content-Type": "application/json" } },
+        )
       } catch (resendError) {
         console.error("Resend error:", resendError)
         // Fall through to mailto fallback

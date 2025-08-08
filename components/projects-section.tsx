@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
-import { useRef } from "react"
-import { ExternalLink, Github, Bot, Coins } from "lucide-react"
+import { useRef, useState } from "react"
+import { ExternalLink, Github, Bot, Coins, FileText, Download } from "lucide-react"
+import DownloadRequestModal from "@/components/download-request-modal"
 
 const projects = [
   {
@@ -14,7 +15,17 @@ const projects = [
     iconBg: "bg-gradient-to-br from-green-400 to-blue-500",
     technologies: ["Python", "Selenium", "NLP", "JavaScript"],
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/samuelogunware/Train_Chatbot",
+  },
+  {
+    title: "Resume Scanner",
+    description:
+      "A web application for scanning and analyzing resumes using React frontend and Node.js backend with file processing capabilities.",
+    icon: FileText,
+    iconBg: "bg-gradient-to-br from-purple-400 to-pink-500",
+    technologies: ["React", "Node.js", "JavaScript", "File Processing"],
+    liveUrl: "#",
+    githubUrl: "https://github.com/samuelogunware/resume_scanner",
   },
   {
     title: "Cryptocurrency Optimisation Research",
@@ -24,13 +35,24 @@ const projects = [
     iconBg: "bg-gradient-to-br from-yellow-400 to-orange-500",
     technologies: ["Python", "Blockchain", "Performance Analysis", "Research"],
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: undefined,
+    hasDownload: true,
   },
 ]
 
-export default function ProjectsSection() {
+interface ProjectsSectionProps {
+  onOpenDownloadModal?: () => void
+}
+
+export default function ProjectsSection({ onOpenDownloadModal }: ProjectsSectionProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+
+  const handleDissertationRequest = () => {
+    if (onOpenDownloadModal) {
+      onOpenDownloadModal()
+    }
+  }
 
   return (
     <section id="projects" className="py-20 relative z-10">
@@ -111,22 +133,37 @@ export default function ProjectsSection() {
 
                   {/* Hover overlay with action buttons */}
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
-                    <motion.a
-                      href={project.liveUrl}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="bg-white text-[#007BFF] p-3 rounded-full hover:bg-gray-100 transition-colors duration-200"
-                    >
-                      <ExternalLink size={20} />
-                    </motion.a>
-                    <motion.a
-                      href={project.githubUrl}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="bg-white text-[#007BFF] p-3 rounded-full hover:bg-gray-100 transition-colors duration-200"
-                    >
-                      <Github size={20} />
-                    </motion.a>
+                    {project.hasDownload ? (
+                      <motion.button
+                        onClick={handleDissertationRequest}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="bg-white text-[#007BFF] p-3 rounded-full hover:bg-gray-100 transition-colors duration-200"
+                      >
+                        <Download size={20} />
+                      </motion.button>
+                    ) : (
+                      <>
+                        <motion.a
+                          href={project.liveUrl}
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          className="bg-white text-[#007BFF] p-3 rounded-full hover:bg-gray-100 transition-colors duration-200"
+                        >
+                          <ExternalLink size={20} />
+                        </motion.a>
+                        {project.githubUrl && (
+                          <motion.a
+                            href={project.githubUrl}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="bg-white text-[#007BFF] p-3 rounded-full hover:bg-gray-100 transition-colors duration-200"
+                          >
+                            <Github size={20} />
+                          </motion.a>
+                        )}
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -149,6 +186,7 @@ export default function ProjectsSection() {
           ))}
         </div>
       </div>
+
     </section>
   )
 }

@@ -8,6 +8,50 @@ import DownloadRequestModal from "@/components/download-request-modal"
 
 const detailedProjects = [
   {
+    title: "Resume Scanner",
+    shortDescription: "Web application for scanning and analyzing resumes using React frontend and Node.js backend",
+    fullDescription:
+      "A modern web application designed to streamline the resume screening process. Built with React frontend and Node.js backend, this tool provides efficient file processing capabilities for analyzing and extracting key information from resume documents.",
+    problem:
+      "Manual resume screening is time-consuming and prone to human bias, making it difficult for recruiters and HR professionals to efficiently process large volumes of applications while maintaining consistency in evaluation criteria.",
+    solution:
+      "Developed a web-based resume scanner that automates the initial screening process, providing structured data extraction and analysis capabilities. The application features a clean React interface with robust Node.js backend processing.",
+    challenges: [
+      "Implementing secure file upload and processing",
+      "Creating responsive React components for optimal UX",
+      "Designing efficient data extraction algorithms",
+      "Ensuring cross-browser compatibility and mobile responsiveness",
+    ],
+    results: [
+      "Successfully processed multiple file formats (PDF, DOC, DOCX)",
+      "Implemented secure file handling with validation",
+      "Created intuitive user interface with real-time feedback",
+      "Established scalable architecture for future enhancements",
+    ],
+    technologies: ["React", "Node.js", "JavaScript", "File Processing", "Express.js", "HTML/CSS"],
+    codeSnippet: `// File Upload Component
+const handleFileUpload = async (file) => {
+  const formData = new FormData();
+  formData.append('resume', file);
+  
+  try {
+    const response = await fetch('/api/upload', {
+      method: 'POST',
+      body: formData
+    });
+    
+    const result = await response.json();
+    setAnalysisResult(result);
+  } catch (error) {
+    console.error('Upload failed:', error);
+  }
+}`,
+    image: "/images/resume.png",
+    liveUrl: "#",
+    githubUrl: "https://github.com/samuelogunware/resume_scanner",
+    hasDownload: false,
+  },
+  {
     title: "AI Train Chatbot",
     shortDescription: "AI chatbot helping users find cheapest UK train tickets with real-time delay checking",
     fullDescription:
@@ -43,7 +87,7 @@ def process_user_query(query):
     }`,
     image: "/images/train-chatbot-interface.png",
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/samuelogunware/Train_Chatbot",
     hasDownload: false,
   },
   {
@@ -75,7 +119,6 @@ def process_user_query(query):
       "Data Visualization",
       "Research Methodology",
     ],
-    image: "/images/cryptocurrency-research.png",
     liveUrl: "#",
     githubUrl: null,
     hasDownload: true,
@@ -232,31 +275,51 @@ export default function DetailedProjectsSection() {
                         </div>
                       )}
 
-                      <div className="grid lg:grid-cols-2 gap-8 mb-8">
-                        <div>
-                          <motion.img
-                            whileHover={{ scale: 1.02 }}
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full rounded-lg shadow-lg border border-[#404040]"
-                          />
-                        </div>
-                        <div>
-                          <h4 className="text-xl font-semibold text-[#F5F5F5] mb-3">Project Overview</h4>
-                          <p className="text-[#F5F5F5]/80 mb-6">{project.fullDescription}</p>
+                      {project.title === "Cryptocurrency Optimisation Research" ? (
+                        <div className="mb-8">
+                          <div className="text-center max-w-4xl mx-auto">
+                            <h4 className="text-xl font-semibold text-[#F5F5F5] mb-6">Project Overview</h4>
+                            <p className="text-[#F5F5F5]/80 mb-8 text-lg leading-relaxed">{project.fullDescription}</p>
 
-                          <div className="space-y-4">
-                            <div>
-                              <h5 className="text-[#007BFF] font-semibold mb-2">Problem Statement</h5>
-                              <p className="text-[#F5F5F5]/80 text-sm">{project.problem}</p>
-                            </div>
-                            <div>
-                              <h5 className="text-[#007BFF] font-semibold mb-2">Solution Approach</h5>
-                              <p className="text-[#F5F5F5]/80 text-sm">{project.solution}</p>
+                            <div className="grid md:grid-cols-2 gap-8">
+                              <div className="text-left">
+                                <h5 className="text-[#007BFF] font-semibold mb-3">Problem Statement</h5>
+                                <p className="text-[#F5F5F5]/80 text-sm leading-relaxed">{project.problem}</p>
+                              </div>
+                              <div className="text-left">
+                                <h5 className="text-[#007BFF] font-semibold mb-3">Solution Approach</h5>
+                                <p className="text-[#F5F5F5]/80 text-sm leading-relaxed">{project.solution}</p>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
+                      ) : (
+                        <div className="grid lg:grid-cols-2 gap-8 mb-8">
+                          <div>
+                            <motion.img
+                              whileHover={{ scale: 1.02 }}
+                              src={project.image}
+                              alt={project.title}
+                              className="w-full rounded-lg shadow-lg border border-[#404040]"
+                            />
+                          </div>
+                          <div>
+                            <h4 className="text-xl font-semibold text-[#F5F5F5] mb-3">Project Overview</h4>
+                            <p className="text-[#F5F5F5]/80 mb-6">{project.fullDescription}</p>
+
+                            <div className="space-y-4">
+                              <div>
+                                <h5 className="text-[#007BFF] font-semibold mb-2">Problem Statement</h5>
+                                <p className="text-[#F5F5F5]/80 text-sm">{project.problem}</p>
+                              </div>
+                              <div>
+                                <h5 className="text-[#007BFF] font-semibold mb-2">Solution Approach</h5>
+                                <p className="text-[#F5F5F5]/80 text-sm">{project.solution}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
 
                       <div className="grid md:grid-cols-2 gap-8 mb-8">
                         <div>

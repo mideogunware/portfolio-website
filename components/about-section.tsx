@@ -32,20 +32,21 @@ export default function AboutSection() {
             className="space-y-6"
           >
             <p className="text-lg leading-relaxed text-[#F5F5F5]">
-              I'm a Computer Science graduate from the University of East Anglia with strong foundations in Python,
-              Java, and data analysis. My journey in technology combines academic excellence with real-world
-              entrepreneurial experience, having built and scaled a profitable e-commerce business to five-figure
-              revenues.
+              I'm a recent Computer Science graduate from the University of East Anglia with a solid grounding in Python,
+              Java, and data analysis. Alongside my studies, I built and scaled a profitable e-commerce business to
+              five-figure revenues, gaining hands-on experience in turning ideas into successful, data-driven ventures.
             </p>
             <p className="text-lg leading-relaxed text-[#F5F5F5]">
-              I specialize in AI systems, web development, and blockchain technology, with hands-on experience in NLP,
-              data analysis, and full-stack development. My technical expertise spans from building AI chatbots to
-              optimizing cryptocurrency systems, always focusing on practical solutions that deliver real value.
+              My technical background spans machine learning, AI systems, web development and blockchain technology,
+              with practical experience in natural language processing, predictive modelling, data analytics, and
+              full-stack development. I've built projects ranging from AI chatbots to an AI-powered resume scanner that
+              analyses job descriptions and evaluates CVs for keyword alignment,always focusing on solutions that are
+              practical, scalable, and impactful.
             </p>
             <p className="text-lg leading-relaxed text-[#F5F5F5]">
-              I'm currently seeking an entry-level role where I can apply my technical expertise and entrepreneurial
-              mindset to contribute to innovative projects and continue growing as a developer in a collaborative
-              environment.
+              I'm now seeking an entry-level role where I can combine my technical expertise and entrepreneurial mindset
+              to contribute to innovative projects, deepen my machine learning skills, and grow as a developer in a
+              collaborative, fast-paced environment.
             </p>
           </motion.div>
 
@@ -105,7 +106,7 @@ export default function AboutSection() {
             <div className="text-[#F5F5F5]/60 text-sm">Computer Science</div>
           </div>
           <div className="text-center p-6 bg-[#2B2B2B]/50 rounded-lg backdrop-blur-sm">
-            <div className="text-3xl font-bold text-[#007BFF] mb-2">£10K+</div>
+                            <div className="text-3xl font-bold text-[#007BFF] mb-2">Five-Figure</div>
             <div className="text-[#F5F5F5] font-medium">Business Revenue</div>
             <div className="text-[#F5F5F5]/60 text-sm">E-commerce Success</div>
           </div>

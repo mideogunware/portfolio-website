@@ -1,0 +1,63 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bg)"/>
+  
+  <!-- Document -->
+  <rect x="100" y="80" width="600" height="440" rx="10" fill="#ffffff" stroke="#e1e5e9" stroke-width="2"/>
+  
+  <!-- Document Header -->
+  <rect x="100" y="80" width="600" height="60" rx="10" fill="#f8f9fa"/>
+  <text x="400" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333">Cryptocurrency Optimisation Research</text>
+  
+  <!-- Abstract Section -->
+  <rect x="120" y="160" width="560" height="80" rx="6" fill="#f8f9fa"/>
+  <text x="140" y="180" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Abstract</text>
+  <text x="140" y="200" font-family="Arial, sans-serif" font-size="12" fill="#666">This research investigates methods to optimize cryptocurrency systems, focusing on the blockchain trilemma of security, scalability, and decentralization while addressing energy consumption concerns.</text>
+  <text x="140" y="220" font-family="Arial, sans-serif" font-size="12" fill="#666">The study evaluates Bitcoin, Ethereum, and Solana networks through comprehensive benchmarking and analysis.</text>
+  
+  <!-- Methodology Section -->
+  <rect x="120" y="260" width="270" height="120" rx="6" fill="#e3f2fd"/>
+  <text x="140" y="280" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1976d2">Methodology</text>
+  <text x="140" y="300" font-family="Arial, sans-serif" font-size="11" fill="#333">• Custom Python benchmarking scripts</text>
+  <text x="140" y="315" font-family="Arial, sans-serif" font-size="11" fill="#333">• Real-time blockchain API data collection</text>
+  <text x="140" y="330" font-family="Arial, sans-serif" font-size="11" fill="#333">• Performance modeling and analysis</text>
+  <text x="140" y="345" font-family="Arial, sans-serif" font-size="11" fill="#333">• Energy consumption measurement</text>
+  <text x="140" y="360" font-family="Arial, sans-serif" font-size="11" fill="#333">• Consensus mechanism comparison</text>
+  
+  <!-- Results Section -->
+  <rect x="410" y="260" width="270" height="120" rx="6" fill="#e8f5e8"/>
+  <text x="430" y="280" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2e7d32">Key Findings</text>
+  <text x="430" y="300" font-family="Arial, sans-serif" font-size="11" fill="#333">• 99%+ energy efficiency in PoS vs PoW</text>
+  <text x="430" y="315" font-family="Arial, sans-serif" font-size="11" fill="#333">• First-Class research grade achieved</text>
+  <text x="430" y="330" font-family="Arial, sans-serif" font-size="11" fill="#333">• Novel optimization strategies identified</text>
+  <text x="430" y="345" font-family="Arial, sans-serif" font-size="11" fill="#333">• Comprehensive benchmarking methodology</text>
+  <text x="430" y="360" font-family="Arial, sans-serif" font-size="11" fill="#333">• Published research findings</text>
+  
+  <!-- Charts Section -->
+  <rect x="120" y="400" width="560" height="100" rx="6" fill="#fff3e0"/>
+  <text x="140" y="420" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#f57c00">Performance Analysis</text>
+  
+  <!-- Chart Bars -->
+  <rect x="160" y="440" width="40" height="40" fill="#ff9800"/>
+  <rect x="220" y="450" width="40" height="30" fill="#4caf50"/>
+  <rect x="280" y="435" width="40" height="45" fill="#2196f3"/>
+  <rect x="340" y="460" width="40" height="20" fill="#9c27b0"/>
+  <rect x="400" y="445" width="40" height="35" fill="#f44336"/>
+  
+  <!-- Chart Labels -->
+  <text x="180" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Bitcoin</text>
+  <text x="240" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Ethereum</text>
+  <text x="300" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Solana</text>
+  <text x="360" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Cardano</text>
+  <text x="420" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Polkadot</text>
+  
+  <!-- Footer -->
+  <text x="400" y="520" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">45-Page Dissertation • First-Class Grade • Blockchain Research</text>
+</svg> 

@@ -7,8 +7,7 @@ import { ChevronDown } from "lucide-react"
 const roles = [
   "I build AI-powered solutions.",
   "I develop web applications.",
-  "I analyze complex data systems.",
-  "I create e-commerce platforms.",
+  "I analyse complex data systems.",
 ]
 
 export default function HeroSection() {

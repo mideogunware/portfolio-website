@@ -292,18 +292,7 @@ export default function ContactSection() {
               </motion.button>
             </form>
 
-            {/* Enhanced Info Box */}
-            <div className="mt-6 p-4 bg-[#2B2B2B]/50 rounded-lg">
-              <div className="flex items-center space-x-2 mb-2">
-                <Zap className="text-green-400" size={16} />
-                <Clock className="text-blue-400" size={16} />
-                <span className="text-green-400 font-medium text-sm">Smart Delivery</span>
-              </div>
-              <p className="text-[#F5F5F5]/60 text-xs">
-                Attempts automated delivery via Resend, falls back to email client if needed. I'll respond within 24
-                hours!
-              </p>
-            </div>
+
           </motion.div>
         </div>
       </div>
